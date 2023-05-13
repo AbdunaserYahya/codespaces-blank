@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+int board[4][4];
+int dirline[]={1,0,-1,0};
+int dircolumn[]={0,1,0,-1};
+
+void newgame() {
+  for(int i=0;i<4;++i)
+    for(int j=0;j<4;++j)
+    board[i][j] = 0;
+}
+void printUI(){
+  for (int i = 0; i < 4; ++i){
+    for (int j = 0; j < 4; ++j)
+        if(board[i][j] == 0)
+        cout <<" ";
+        else
+            cout<<board[i][j];
+        cout<<endl;
+
+
+  }
+  cout<<"n: newgame , w:up,s:down,d:right,a:left,q:quit"<<endl;
+}
+
+
+int main()
+{
+    char commandtodir[120];
+    commandtodir['s']=0;
+    commandtodir['d']=1;
+    commandtodir['w']=2;
+    commandtodir['a']=3;
+    while (true){
+        printUI();
+        char command;
+        cin>>command;
+        if(command == 'n')
+            newgame();
+        else if(command == 'q')
+            break;
+        else{
+            int currentDirection = commandtodir[command];
+            cout<< currentDirection<<endl;
+        }
+    }
+
+    cout << "Hello world!" << endl;
+    return 0;
+}
